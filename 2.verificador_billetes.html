@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Verificador de Billetes</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+padding:40px;
+}
+
+h1{
+color:#38bdf8;
+}
+
+input{
+padding:10px;
+font-size:18px;
+border-radius:8px;
+border:none;
+margin:10px;
+}
+
+button{
+padding:10px 20px;
+font-size:18px;
+border-radius:8px;
+border:none;
+background:#38bdf8;
+cursor:pointer;
+}
+
+button:hover{
+background:#0ea5e9;
+}
+
+#resultado{
+margin-top:20px;
+font-size:22px;
+font-weight:bold;
+}
+
+.valido{
+color:#22c55e;
+}
+
+.falso{
+color:#ef4444;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>💵 Verificador de Billetes</h1>
+
+<p>Ingrese el número de serie del billete</p>
+
+<input type="text" id="numeroBillete" placeholder="Ej: 12345678">
+
+<br>
+
+<button onclick="verificar()">Verificar</button>
+
+<div id="resultado"></div>
+
+<script>
+
+const billetesInvalidos = [
+"12345678",
+"87654321",
+"11111111",
+"22222222",
+"99999999"
+]
+
+function verificar(){
+
+let numero = document.getElementById("numeroBillete").value
+let resultado = document.getElementById("resultado")
+
+if(numero === ""){
+resultado.innerHTML="⚠️ Ingrese un número"
+resultado.className="falso"
+return
+}
+
+if(billetesInvalidos.includes(numero)){
+
+resultado.innerHTML="❌ BILLETE REPORTADO COMO FALSO"
+resultado.className="falso"
+
+}else{
+
+resultado.innerHTML="✅ Billete sin reporte"
+resultado.className="valido"
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
